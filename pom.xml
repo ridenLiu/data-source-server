@@ -97,12 +97,18 @@
             <!-- <scope>provided</scope>-->
         </dependency>
 
-        <!-- oracle驱动 注:oracle驱动,maven支持不很友好,以下是引用本地的驱动 -->
 
+        <!-- SpringBoot 对lombok 支持 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!-- oracle驱动 注:oracle驱动,maven支持不很友好,强烈建议使用你安装的oracle中自带的jdbc驱动包 -->
         <dependency>
             <groupId>com.oracle</groupId>
-            <artifactId>ojdbc14</artifactId>
-            <version>10.2.0.1.0</version>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0</version>
         </dependency>
 
 
