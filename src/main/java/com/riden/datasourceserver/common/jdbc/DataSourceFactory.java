@@ -83,7 +83,7 @@ public class DataSourceFactory {
         ds.setConnectionProperties("druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000"); // 通过connectProperties属性来打开mergeSql功能；慢SQL记录
         try {
             // 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
-            ds.setFilters("stat,wall,slf4j"); // todo 待处理的东西
+            ds.setFilters("stat,wall,slf4j");
         } catch (SQLException e) {
             e.printStackTrace();
             log.error("DataSourceFactory数据库链路:" + connObj.getDb_link_name() + "初始化失败,请检查链路信息", e);

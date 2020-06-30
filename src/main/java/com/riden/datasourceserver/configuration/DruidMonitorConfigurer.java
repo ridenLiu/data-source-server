@@ -1,0 +1,55 @@
+package com.riden.datasourceserver.configuration;
+
+import com.alibaba.druid.support.http.StatViewServlet;
+import com.alibaba.druid.support.http.WebStatFilter;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * 配置druid监控
+ */
+@Configuration
+public class DruidMonitorConfigurer {
+
+    @Value("${druidMonitor.username}")
+    private String username;
+    @Value("${druidMonitor.password}")
+    private String password;
+    @Value("${druidMonitor.resetEnable}")
+    private String resetEnable;
+
+
+    /**
+     * 注册ServletRegistrationBean
+     */
+    @Bean
+    public ServletRegistrationBean registrationBean(){
+        ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(),"/druid/*");
+        // 初始化参数配置，initParams
+        //登录查看信息的账号密码.
+        bean.addInitParameter("loginUsername", username);
+        bean.addInitParameter("loginPassword", password);
+        //是否能够重置数据.
+        bean.addInitParameter("resetEnable", resetEnable);
+        return bean;
+    }
+    /**
+     * 注册FilterRegistrationBean
+     *
+     * @return
+     */
+    @Bean
+    public FilterRegistrationBean druidStatFilter(){
+        FilterRegistrationBean bean = new FilterRegistrationBean(new WebStatFilter());
+        // 添加过滤规则
+        bean.addUrlPatterns("/*");
+        // 添加不需要忽略的格式信息
+        bean.addInitParameter("exclusions","*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
+        return bean;
+    }
+
+
+}
