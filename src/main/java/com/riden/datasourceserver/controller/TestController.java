@@ -2,15 +2,23 @@ package com.riden.datasourceserver.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
+import com.riden.datasourceserver.common.jdbc.DataSourceFactory;
+import com.riden.datasourceserver.entity.SysDataConnect;
+import com.riden.datasourceserver.mapper.SysDataConnectMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
 import javax.sql.DataSource;
-import java.sql.*;
-import java.util.Map;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
 
 /**
  * 与业务无关的本地测试类!
@@ -21,59 +29,38 @@ import java.util.Map;
 public class TestController {
 
     @Autowired
-    DataSource dataSource;
-    @Autowired
-    PageHelper pageHelper;
+    DataSourceFactory factory;
 
-
-    @GetMapping("/sayHello")
-    public JSONObject hello() {
-        JSONObject res = new JSONObject();
-        res.put("world", "hello World");
-        return res;
-    }
-
-
-    @ApiOperation("Post请求测试")
-    @PostMapping("/postt")// 只要接口中,返回值中存在实体类,它就会被扫描到swagger中
-    public String postTest(@ApiParam(value = "姓名", name = "jkName", required = true) @RequestBody Map<String, Object> map) {
-        return "收到,收到: " + map.get("jkName");
-    }
-
-    /*
-    value用于方法描述
-    notes用于提示内容
-    tags可以重新分组（视情况而用）
-     */
-    @ApiOperation(value = "获取一条学生数据", notes = "注意问题点")
-    @GetMapping("/data")
-    public JSONObject test1() {
-        JSONObject res = new JSONObject();
-        Connection conn = null;
-        try {
-            System.out.println(dataSource);
-            conn = dataSource.getConnection();
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM STUDENT");
-            ResultSetMetaData rsm = ps.getMetaData();
-            int columnCount = rsm.getColumnCount();
-            String[] names = new String[columnCount];
-            for (int i = 0; i < names.length; i++) {
-                names[i] = rsm.getColumnName(i + 1);
-            }
-            ResultSet rs = ps.executeQuery();
-            int count = 1;
-            while (rs.next()) {
-                for (int i = 0; i < names.length; i++) {
-                    res.put(names[i], rs.getObject(i + 1));
-                }
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+    @GetMapping("t1")
+    public String test1(Boolean flag) {
+        if (flag) {
+            throw new NullPointerException("如果这都不算爱,我有什么好悲哀!");
         }
 
-        System.out.println("返回结果: " + res);
-        return res;
+        return "处理结束";
     }
 
+
+    @GetMapping("/t2")
+    public JSONObject test2() throws SQLException {
+        JSONObject j = new JSONObject();
+        // mariadb: 2c040933f62e4c3d9568fbddfe8aafa0
+        // oracle: 3e4a37c5cee1461ca21367f14721ca2e
+        DataSource ds = factory.getById("3e4a37c5cee1461ca21367f14721ca2e");
+        Connection conn = ds.getConnection();
+        String sql = "select * from HT_LXSQ";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            for (int i = 0; i < 5; i++) {
+                System.out.print(rs.getObject(i + 1) + "\t");
+            }
+            System.out.println();
+        }
+
+        rs.close();
+        ps.close();
+        conn.close();
+        return j;
+    }
 }
