@@ -42,22 +42,22 @@ public class SysDataColumn implements Serializable {
     @ApiModelProperty(value = "数据源名称")
     private String ds_name;
 
-    @ApiModelProperty(value = "序号")
+    @ApiModelProperty(value = "序号",example = "123")
     private Integer column_num;
 
-    @ApiModelProperty(value = "字段长度")
+    @ApiModelProperty(value = "字段长度",example = "1")
     private Integer column_length;
 
-    @ApiModelProperty(value = "是否主键  0:非主键 1:主键")
+    @ApiModelProperty(value = "是否主键  0:非主键 1:主键",example = "1")
     private Integer column_primary_key;
 
-    @ApiModelProperty(value = "可唯一 0:不唯一 1:唯一")
+    @ApiModelProperty(value = "可唯一 0:不唯一 1:唯一",example = "1")
     private Integer column_unique;
 
     @ApiModelProperty(value = "字段类型")
     private String column_type;
 
-    @ApiModelProperty(value = "可非空 0:可为空 1:空")
+    @ApiModelProperty(value = "可非空 0:可为空 1:空",example = "1")
     private Integer column_isnull;
 
 }

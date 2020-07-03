@@ -45,7 +45,7 @@ public class SysDataParm implements Serializable {
     @ApiModelProperty(value = "参数类型：IN/OUT")
     private String parm_type;
 
-    @ApiModelProperty(value = "序号",hidden = true)
+    @ApiModelProperty(value = "序号",example = "123",hidden = true)
     private Integer parm_num;
 
     @ApiModelProperty(value = "默认值")
@@ -60,6 +60,6 @@ public class SysDataParm implements Serializable {
     @ApiModelProperty(value = "查询方式,0:非模糊查询,1:模糊查询(包含),2:模糊查询(开头),3:模糊查询(结尾)")
     private String parm_query_type;
 
-    @ApiModelProperty(value = "备用字段",hidden = true)
+    @ApiModelProperty(value = "备用字段",example = "123",hidden = true)
     private String other;
 }

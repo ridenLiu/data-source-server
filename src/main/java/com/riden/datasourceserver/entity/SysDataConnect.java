@@ -25,7 +25,7 @@ import java.util.Date;
  */
 @Data
 @ToString
-@ApiModel(value="表:SYS_DATA_CONNECT对应实体", description="数据库信息")
+@ApiModel(value = "表:SYS_DATA_CONNECT对应实体", description = "数据库信息")
 public class SysDataConnect implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,51 +34,51 @@ public class SysDataConnect implements Serializable {
     private String db_link_no;
 
     @ApiModelProperty(value = "数据库链接名称")
-    private  String db_link_name;
+    private String db_link_name;
 
     @ApiModelProperty(value = "数据库链接描述")
-    private  String db_link_desc;
+    private String db_link_desc;
 
     @ApiModelProperty(value = "数据库链接类型")
-    private  String db_link_type;
+    private String db_link_type;
 
     @ApiModelProperty(value = "数据库ip")
-    private  String db_ip;
+    private String db_ip;
 
     @ApiModelProperty(value = "数据库名称")
-    private  String db_name;
+    private String db_name;
 
     @ApiModelProperty(value = "数据库用户")
-    private  String db_user;
+    private String db_user;
 
-    @ApiModelProperty(value = "数据库口令",hidden = true)
-    private  String db_pw;
+    @ApiModelProperty(value = "数据库口令", hidden = true)
+    private String db_pw;
 
-    @ApiModelProperty(value = "显示顺序",hidden = true)
-    private  Integer sequ_num;
+    @ApiModelProperty(value = "显示顺序",example = "123", hidden = true)
+    private Integer sequ_num;
 
     @ApiModelProperty(value = "数据库状态 显示停用或启用")
-    private  String db_state;
+    private String db_state;
 
-    @ApiModelProperty(value = "添加人姓名",hidden = true)
-    private  String create_user_id;
+    @ApiModelProperty(value = "添加人姓名", hidden = true)
+    private String create_user_id;
 
-    @ApiModelProperty(value = "添加时间",hidden = true)
-    //@JSONField 因pom引用了fastjson 会有冲突,不生效,改为JSONField 即可
+    @ApiModelProperty(value = "添加时间", hidden = true)
+    //@JSONField 对数据进行处理.默认使用Jackson框架,现已改为FastJson,参见HttpMessageConverterConfig
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private  Date create_date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date create_date;
 
     @ApiModelProperty(value = "端口")
-    private  String server_port;
+    private String server_port;
 
     @ApiModelProperty(value = "数据库版本")
-    private  String db_ver;
+    private String db_ver;
 
-    @ApiModelProperty(value = "是否是SID，针对oracle数据库，Y：代表SID，N：代表SERVICE_NAME",hidden = true)
-    private  String issid;
+    @ApiModelProperty(value = "是否是SID，针对oracle数据库，Y：代表SID，N：代表SERVICE_NAME", hidden = true)
+    private String issid;
 
-    @ApiModelProperty(value = "备用字段",hidden = true)
-    private  String other;
+    @ApiModelProperty(value = "备用字段", hidden = true)
+    private String other;
 
 }

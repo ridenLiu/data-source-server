@@ -10,7 +10,7 @@
  */
 package com.riden.datasourceserver.mapper;
 
-import com.riden.datasourceserver.entity.SysDataSoure;
+import com.riden.datasourceserver.entity.SysDataSource;
 import org.apache.ibatis.annotations.*;
 import java.util.List;
 
@@ -20,7 +20,7 @@ import java.util.List;
  * @create: 2020/4/20
  * @since: 1.0.0
  */
-public interface SysDataSoureMapper {
+public interface SysDataSourceMapper {
     @Select("<script> " +
             " select s.*,c.db_link_name as db_link_name " +
             "   from sys_data_connect c, sys_data_source s " +
@@ -31,12 +31,12 @@ public interface SysDataSoureMapper {
             "  <when  test='db_link_no!=null'> and  s.db_link_no=#{db_link_no} </when>   " +
             "  ORDER BY s.create_date desc"+
             "</script>")
-    List<SysDataSoure> querySysDataSoure(@Param("parameter") String parameter,
-                                                @Param("db_link_no") String db_link_no);
+    List<SysDataSource> querySysDataSoure(@Param("parameter") String parameter,
+                                          @Param("db_link_no") String db_link_no);
 
     @Insert({" insert into sys_data_source (DS_ID, DS_NAME, DS_TYPE, DS, REMARKS, DB_LINK_NO, OTHER, CREATE_DATE) " +
             "  values ( #{ds_id},#{ds_name},#{ds_type},#{ds},#{remarks},#{db_link_no},#{other},sysdate )"})
-    int add(SysDataSoure sysDataSoure);
+    int add(SysDataSource sysDataSoure);
 
     @Update({" update sys_data_source " +
             "    set DS_NAME = #{ds_name}, " +
@@ -46,10 +46,10 @@ public interface SysDataSoureMapper {
             "        DB_LINK_NO  = #{db_link_no}, " +
             "        OTHER = #{other} " +
             "  where DS_ID = #{ds_id} "})
-    int edit(SysDataSoure sysDataSoure);
+    int edit(SysDataSource sysDataSoure);
 
     @Select({" select * from sys_data_source s where s.ds_id=#{ds_id} "})
-    SysDataSoure queryById(@Param("ds_id") String ds_id);
+    SysDataSource queryById(@Param("ds_id") String ds_id);
 
     @Select("<script> " +
             "  select ds_id from sys_data_source where db_link_no in " +

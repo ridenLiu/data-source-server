@@ -26,7 +26,7 @@ import java.util.Date;
 @Data
 @ToString
 @ApiModel(value="表:SYS_DATA_SOURCE对应实体", description="数据源信息")
-public class SysDataSoure implements Serializable {
+public class SysDataSource implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

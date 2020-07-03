@@ -96,25 +96,26 @@ public class DataSourceFactory {
     /**
      * 获取 JDBC 链接
      */
-    public DataSource getById (String id){
+    public DataSource getById(String id) {
         return dataSourceMap.get(id);
     }
 
     /**
      * 移除 数据源
      */
-    public void removeById (String id) {
+    public void removeById(String id) {
         dataSourceMap.remove(id);
+        log.info("删除数据源链路,链路id: " + id);
     }
 
     /**
      * 添加数据源管理
      */
-    public void addDataSource (SysDataConnect sysDataConnect){
+    public void addDataSource(SysDataConnect sysDataConnect) {
         DataSource dataSource = getDataSource(sysDataConnect);
-        if(dataSource!=null){
-            dataSourceMap.put(sysDataConnect.getDb_link_no(),dataSource);
-            log.info("DataSourceFactory添加数据库链路:"+sysDataConnect.getDb_link_name()+",添加成功");
+        if (dataSource != null) {
+            dataSourceMap.put(sysDataConnect.getDb_link_no(), dataSource);
+            log.info("DataSourceFactory添加数据库链路:" + sysDataConnect.getDb_link_name() + ",添加成功");
         }
     }
 

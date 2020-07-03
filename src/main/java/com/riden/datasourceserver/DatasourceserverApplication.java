@@ -32,12 +32,11 @@ public class DatasourceserverApplication {
         String port = env.getProperty("server.port");
         String path = env.getProperty("server.servlet.context-path");
         log.info("\n----------------------------------------------------------\n\t" +
-                "Application HYsoft-Boot is running! Access URLs:\n\t" +
+                "Application Riden's dataSourceServer is running! Access URLs:\n\t" +
                 "Local: \t\thttp://localhost:" + port + path + "/\n\t" +
                 "External: \thttp://" + ip + ":" + port + path + "/\n\t" +
                 "druid monitor: \thttp://" + ip + ":" + port + path + "/druid/index.html\n\t" +
-//                "swagger-ui: \thttp://" + ip + ":" + port + path + "/swagger-ui.html\n\t" +
+                "swagger-ui: \thttp://" + ip + ":" + port + path + "/swagger-ui.html\n\t" +
                 "----------------------------------------------------------");
-        // http://192.168.43.94:8081/data-source-serve/druid/index.html
     }
 }

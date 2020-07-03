@@ -22,6 +22,12 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
+                    <!--
+                    由于使用了热部署jar包,导致了IDEA的debug无效,解决方法:
+                    1. 在此处设置fork属性为false
+                    2. 去除热部署的依赖
+                    -->
+                    <fork>false</fork>
                     <source>11</source> <!-- 源代码使用的开发版本 -->
                     <target>11
                     </target> <!-- 需要生成的目标class文件的编译版本 --><!-- 一般而言，target与source是保持一致的，但是，有时候为了让程序能在其他版本的jdk中运行(对于低版本目标jdk，源代码中需要没有使用低版本jdk中不支持的语法)，会存在target不同于source的情况 -->
@@ -141,7 +147,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.62</version>
+            <version>1.2.72</version>
         </dependency>
 
         <!-- Swagger API文档 -->
