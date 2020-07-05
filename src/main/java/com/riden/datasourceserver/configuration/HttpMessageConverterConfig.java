@@ -25,7 +25,7 @@ public class HttpMessageConverterConfig {
 
     /**
      * 引入Fastjson解析json，不使用默认的jackson
-     * 必须在pom.xml引入fastjson的jar包，并且版必须大于1.2.10
+     * 必须在pom.xml引入fastjson的jar包，并且版本必须大于1.2.10
      */
     @Bean
     public HttpMessageConverters fastJsonHttpMessageConverters() {

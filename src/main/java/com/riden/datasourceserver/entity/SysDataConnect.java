@@ -51,19 +51,19 @@ public class SysDataConnect implements Serializable {
     @ApiModelProperty(value = "数据库用户")
     private String db_user;
 
-    @ApiModelProperty(value = "数据库口令", hidden = true)
+    @ApiModelProperty(value = "数据库口令")
     private String db_pw;
 
-    @ApiModelProperty(value = "显示顺序",example = "123", hidden = true)
+    @ApiModelProperty(value = "显示顺序",example = "123")
     private Integer sequ_num;
 
     @ApiModelProperty(value = "数据库状态 显示停用或启用")
     private String db_state;
 
-    @ApiModelProperty(value = "添加人姓名", hidden = true)
+    @ApiModelProperty(value = "添加人姓名")
     private String create_user_id;
 
-    @ApiModelProperty(value = "添加时间", hidden = true)
+    @ApiModelProperty(value = "添加时间")
     //@JSONField 对数据进行处理.默认使用Jackson框架,现已改为FastJson,参见HttpMessageConverterConfig
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

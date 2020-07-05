@@ -10,7 +10,7 @@ import com.riden.datasourceserver.common.ResponseBase;
 import com.riden.datasourceserver.entity.SysDataParm;
 import com.riden.datasourceserver.entity.SysDataSource;
 import com.riden.datasourceserver.mapper.SysDataColumnMapper;
-import com.riden.datasourceserver.mapper.SysDataParmMapper;
+import com.riden.datasourceserver.mapper.SysDataParamMapper;
 import com.riden.datasourceserver.mapper.SysDataSourceMapper;
 import com.riden.datasourceserver.service.SysDataSourceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class SysDataSourceServiceImpl extends BaseApiService implements SysDataS
 
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
-    private SysDataParmMapper sysDataParmMapper;
+    private SysDataParamMapper sysDataParamMapper;
 
 
     @Override
@@ -82,7 +82,7 @@ public class SysDataSourceServiceImpl extends BaseApiService implements SysDataS
     @Override
     public ResponseBase delete(String[] ds_ids) {
         //删除数据源对应的参数
-        int parmNum = sysDataParmMapper.deleteByDsIds(ds_ids);
+        int parmNum = sysDataParamMapper.deleteByDsIds(ds_ids);
         //删除数据源对应的字段
         int columnNum = sysDataColumnMapper.deleteByDsIds(ds_ids);
         //删除数据源
@@ -109,7 +109,7 @@ public class SysDataSourceServiceImpl extends BaseApiService implements SysDataS
         }
 
 
-        List<SysDataParm> parmList = sysDataParmMapper.querySysDataParm("", ds_id);
+        List<SysDataParm> parmList = sysDataParamMapper.querySysDataParam("", ds_id);
         JSONObject obj = new JSONObject(true);
         obj.put("ds_id", ds_id);
 

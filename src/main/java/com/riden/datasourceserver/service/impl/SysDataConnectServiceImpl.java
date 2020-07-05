@@ -13,7 +13,7 @@ import com.riden.datasourceserver.common.jdbc.JDBCUtils;
 import com.riden.datasourceserver.entity.SysDataConnect;
 import com.riden.datasourceserver.mapper.SysDataColumnMapper;
 import com.riden.datasourceserver.mapper.SysDataConnectMapper;
-import com.riden.datasourceserver.mapper.SysDataParmMapper;
+import com.riden.datasourceserver.mapper.SysDataParamMapper;
 import com.riden.datasourceserver.mapper.SysDataSourceMapper;
 import com.riden.datasourceserver.service.SysDataConnectService;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +42,7 @@ public class SysDataConnectServiceImpl extends BaseApiService implements SysData
     private SysDataSourceMapper sysDataSourceMapper;
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
-    private SysDataParmMapper paramMapper;
+    private SysDataParamMapper paramMapper;
     @Autowired
     private DataSourceFactory dataSourceFactory;
 

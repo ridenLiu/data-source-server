@@ -48,13 +48,13 @@ public class SysDataSource implements Serializable {
     @ApiModelProperty(value = "数据库链接编号,SYS_DATA_CONNECT:DB_LINK_NO")
     private String db_link_no;
 
-    @ApiModelProperty(value = "数据库链接名称",hidden = true)
+    @ApiModelProperty(value = "数据库链接名称")
     private String db_link_name;
 
-    @ApiModelProperty(value = "备用字段" ,hidden = true)
+    @ApiModelProperty(value = "备用字段" )
     private String other;
 
-    @ApiModelProperty(value = "添加时间",hidden = true)
+    @ApiModelProperty(value = "添加时间")
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date create_date;

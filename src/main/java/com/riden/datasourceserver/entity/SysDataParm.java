@@ -27,13 +27,13 @@ public class SysDataParm implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "参数ID",hidden = true)
+    @ApiModelProperty(value = "参数ID")
     private String parm_id;
 
     @ApiModelProperty(value = "数据源ID")
     private String ds_id;
 
-    @ApiModelProperty(value = "数据源名称",hidden = true)
+    @ApiModelProperty(value = "数据源名称")
     private String ds_name;
 
     @ApiModelProperty(value = "参数代码")
@@ -45,7 +45,7 @@ public class SysDataParm implements Serializable {
     @ApiModelProperty(value = "参数类型：IN/OUT")
     private String parm_type;
 
-    @ApiModelProperty(value = "序号",example = "123",hidden = true)
+    @ApiModelProperty(value = "序号",example = "123")
     private Integer parm_num;
 
     @ApiModelProperty(value = "默认值")

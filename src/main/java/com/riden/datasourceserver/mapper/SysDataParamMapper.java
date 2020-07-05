@@ -21,7 +21,7 @@ import java.util.List;
  * @create: 2020/4/21
  * @since 1.0.0
  */
-public interface SysDataParmMapper {
+public interface SysDataParamMapper {
 
     @Select("<script> " +
             " select s.*,c.ds_name as ds_name " +
@@ -34,7 +34,7 @@ public interface SysDataParmMapper {
             "  <when  test='ds_id!=null'> and  s.ds_id=#{ds_id} </when>   " +
             "  ORDER BY s.parm_num "+
             "</script>")
-    List<SysDataParm> querySysDataParm(@Param("parameter") String parameter,
+    List<SysDataParm> querySysDataParam(@Param("parameter") String parameter,
                                               @Param("ds_id") String ds_id);
 
     @Insert({" insert into sys_data_parm (PARM_ID, DS_ID, PARM_CODE, PARM_NAME, PARM_TYPE, PARM_NUM, DEF_VALUE, PARM_DESC, PARM_DATA_TYPE, OTHER,PARM_QUERY_TYPE) " +
@@ -57,12 +57,12 @@ public interface SysDataParmMapper {
     @Select({
             " select max(t.parm_num) as parm_num from sys_data_parm t where t.ds_id=#{ds_id}"
     })
-    SysDataParm queryMaxParmNum(@Param("ds_id") String ds_id);
+    SysDataParm queryMaxParamNum(@Param("ds_id") String ds_id);
 
     @Select({
             " select * from sys_data_parm t where t.ds_id=#{ds_id} and t.parm_code=#{parm_code}"
     })
-    SysDataParm querySysDataParmByParmCode(@Param("ds_id") String ds_id, @Param("parm_code") String parm_code);
+    SysDataParm querySysDataParamByParamCode(@Param("ds_id") String ds_id, @Param("parm_code") String parm_code);
 
     @Delete("<script> " +
             "  delete from sys_data_parm where parm_id  in " +
@@ -75,7 +75,7 @@ public interface SysDataParmMapper {
     @Select({
             " select * from sys_data_parm t where t.parm_id=#{parm_id}"
     })
-    SysDataParm querySysDataParmById(@Param("parm_id") String parm_id);
+    SysDataParm querySysDataParamById(@Param("parm_id") String parm_id);
 
     @Update({" update SYS_DATA_PARM " +
             "    set PARM_NUM = #{parm_num} " +
