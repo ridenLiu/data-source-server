@@ -22,7 +22,7 @@ import java.io.Serializable;
  */
 @Data
 @ToString
-@ApiModel(value="表:SYS_DATA_PARM对应实体", description="数据源参数信息")
+@ApiModel(value="表:SYS_DATA_PARAM对应实体", description="数据源参数信息")
 public class SysDataParm implements Serializable {
 
     private static final long serialVersionUID = 1L;
